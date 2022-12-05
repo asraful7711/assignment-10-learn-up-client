@@ -1,0 +1,50 @@
+[
+    {
+        "_id": "638e224c9d391e82adac5c16",
+        "price": "$803.20",
+        "picture": "https://thumbs.dreamstime.com/b/python-logo-icon-vector-logos-logo-icons-set-social-media-flat-banner-vectors-svg-eps-jpg-jpeg-emblem-wallpaper-background-python-208329675.jpg",
+        "user": "",
+        "name": "Python",
+        "description": "Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional programming."
+    },
+    {
+        "_id": "638e224cee4b70def8472b7f",
+        "price": "$574.87",
+        "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY0JeyLTcn-kwLcHWl0gf3XzfFnot6eshV2ms8RVkEmzZst74I4X24PO8KCT7inFz46W0&usqp=CAU",
+        "user": "",
+        "name": "Mern Stack",
+        "description": "loremloremloremloremloremloremloremloremloremloremloremdsddss"
+    },
+    {
+        "_id": "638e224c116acac4d12e2b77",
+        "price": "$545.39",
+        "picture": "https://www.goodworklabs.com/wp-content/uploads/2017/08/Mean.jpg",
+        "user": "",
+        "name": "Mean Stack",
+        "description": "loremloremloremloremloremloremloremloremloremloremlorem"
+    },
+    {
+        "_id": "638e224cb1d710c64e58a246",
+        "price": "$553.32",
+        "picture": "https://www.educative.io/v2api/editorpage/5393602882568192/image/6038586442907648",
+        "user": "",
+        "name": "C++",
+        "description": "loremloremloremloremloremloremloremloremloremloremlorem"
+    },
+    {
+        "_id": "638e224cc3814fc71523ffdb",
+        "price": "$564.37",
+        "picture": "https://www.oracle.com/a/ocom/img/hp11-intl-java-logo.jpg",
+        "user": "",
+        "name": "Java",
+        "description": "loremloremloremloremloremloremloremloremloremloremlorem"
+    },
+    {
+        "_id": "638e224cab49a2eb74718720",
+        "price": "$941.35",
+        "picture": "https://cms-assets.tutsplus.com/uploads/users/16/courses/221/preview_image/php-fundamentals-400x277.jpg",
+        "user": "",
+        "name": "Php",
+        "description": "loremloremloremloremloremloremloremloremloremloremlorem"
+    }
+]

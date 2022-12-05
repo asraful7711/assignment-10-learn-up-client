@@ -36,7 +36,7 @@ const Header = () => {
                         <ul className="flex items-center hidden space-x-8 lg:flex">
                             <li>
                                 <Link
-                                    to="/"
+                                    to="/courses"
                                     aria-label="Our Courses"
                                     title="Our Courses"
                                     className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md bg-deep-purple-accent-400 focus:shadow-outline focus:outline-none hover:border-b-4 border-yellow-500"
@@ -46,7 +46,7 @@ const Header = () => {
                             </li>
                             <li>
                                 <Link
-                                    to="/"
+                                    to="/faq"
                                     aria-label="Our FAQ"
                                     title="Our FAQ"
                                     className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md bg-deep-purple-accent-400 focus:shadow-outline focus:outline-none hover:border-b-4 border-yellow-500"
@@ -56,7 +56,7 @@ const Header = () => {
                             </li>
                             <li>
                                 <Link
-                                    to="/"
+                                    to="/blog"
                                     aria-label="Product Blog"
                                     title="Product Blog"
                                     className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md bg-deep-purple-accent-400 focus:shadow-outline focus:outline-none hover:border-b-4 border-yellow-500"
@@ -161,7 +161,7 @@ const Header = () => {
                                         <ul className="space-y-4">
                                             <li>
                                                 <Link
-                                                    to="/"
+                                                    to="/courses"
                                                     aria-label="Our product"
                                                     title="Our product"
                                                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
@@ -171,7 +171,7 @@ const Header = () => {
                                             </li>
                                             <li>
                                                 <Link
-                                                    to="/"
+                                                    to="/faq"
                                                     aria-label="Our product"
                                                     title="Our product"
                                                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
@@ -181,7 +181,7 @@ const Header = () => {
                                             </li>
                                             <li>
                                                 <Link
-                                                    to="/"
+                                                    to="/blog"
                                                     aria-label="Product pricing"
                                                     title="Product pricing"
                                                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
@@ -191,7 +191,7 @@ const Header = () => {
                                             </li>
                                             <li>
                                                 <Link
-                                                    to="/"
+                                                    to="/login"
                                                     aria-label="Sign in"
                                                     title="Sign in"
                                                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"

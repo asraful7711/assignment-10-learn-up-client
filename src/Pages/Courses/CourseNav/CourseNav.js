@@ -18,8 +18,8 @@ const CourseNav = () => {
                 <ul className="space-y-2">
                     {
                         categories.map(category =>
-                            <li key={category.id}>
-                                <Link to={`/course/${category.id}`} className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <li key={category._id}>
+                                <Link to={`/course/${category._id}`} className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                                     <FaBookReader className='text-lg mx-4'></FaBookReader>
                                     {category.name}
                                 </Link>

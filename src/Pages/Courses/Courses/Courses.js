@@ -5,10 +5,11 @@ import CourseNav from '../CourseNav/CourseNav';
 
 const Courses = () => {
     const courses = useLoaderData();
+    const { _id } = courses
     return (
         <div className='lg:grid lg:grid-cols-4  w-full'>
             <div className='lg:col-span-1'>
-                <CourseNav></CourseNav>
+                <CourseNav courses={courses}></CourseNav>
             </div>
             <div className='col-span-3 bg-slate-300 lg:grid lg:grid-cols-3 p-7'>
                 {

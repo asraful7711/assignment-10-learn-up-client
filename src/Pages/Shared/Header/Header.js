@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .then(error => console.error(error))
+    }
     return (
         <div className="bg-gray-900">
             <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
@@ -67,28 +76,62 @@ const Header = () => {
                         </ul>
                     </div>
                     <ul className="flex items-center hidden space-x-8 lg:flex">
-                        <li>
-                            <Link
-                                to="/login"
-                                aria-label="Sign in"
-                                title="Sign in"
-                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md bg-deep-purple-accent-400 focus:shadow-outline focus:outline-none hover:border-b-4 border-yellow-500"
-                            >
-                                Log in
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                to="/signup"
-                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md bg-deep-purple-accent-400 focus:shadow-outline focus:outline-none hover:border-b-4 border-yellow-500"
-                                aria-label="Sign up"
-                                title="Sign up"
-                            >
-                                Sign up
-                            </Link>
-                        </li>
+
+                        <>
+                            {user?.uid ?
+                                <>
+                                    <Link
+                                        onClick={handleLogOut}
+                                        to="/login"
+                                        aria-label="Sign in"
+                                        title="Log out"
+                                        className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md bg-deep-purple-accent-400 focus:shadow-outline focus:outline-none hover:border-b-4 border-yellow-500"
+                                    >
+                                        Log out
+                                    </Link>
+                                </>
+                                :
+                                <>
+                                    <li>
+                                        <Link
+                                            to="/login"
+                                            aria-label="Sign in"
+                                            title="Sign in"
+                                            className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md bg-deep-purple-accent-400 focus:shadow-outline focus:outline-none hover:border-b-4 border-yellow-500"
+                                        >
+                                            Log in
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            to="/signup"
+                                            className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md bg-deep-purple-accent-400 focus:shadow-outline focus:outline-none hover:border-b-4 border-yellow-500"
+                                            aria-label="Sign up"
+                                            title="Sign up"
+                                        >
+                                            Sign up
+                                        </Link>
+                                    </li>
+                                </>
+
+                            }
+                        </>
+
+                        <p className='text-white'>{user?.displayName}</p>
+
+
+                        {
+                            user?.photoURL ?
+                                <img
+                                    title={user?.displayName}
+                                    className='w-10 rounded-full'
+                                    src={user.photoURL} alt="" />
+                                :
+                                <FaUser className='text-lg text-gray-300'></FaUser>
+                        }
+
                     </ul>
-                    <div className="lg:hidden mr-0 pr-0">
+                    <div className="lg:hidden mr-0 pr-0 mb-12">
                         <button
                             aria-label="Open Menu"
                             title="Open Menu"

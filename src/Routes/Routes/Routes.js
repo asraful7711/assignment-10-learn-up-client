@@ -22,7 +22,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/courses',
                 element: <Courses></Courses>,
-                loader: () => fetch('http://localhost:5000/course')
+                loader: () => fetch('https://assignment-10-learn-up-server.vercel.app/course')
             },
             {
                 path: 'faq',
@@ -43,7 +43,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/course/:id',
                 element: <PrivateRoute><SingleCourse></SingleCourse></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-10-learn-up-server.vercel.app/course/${params.id}`)
             }
         ]
     },

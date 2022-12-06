@@ -5,7 +5,17 @@ import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
     const [error, setError] = useState();
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(e => console.error(e));
+    }
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -20,10 +30,10 @@ const SignUp = () => {
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user)
+                // console.log(user)
                 setError('');
                 form.reset()
-                // handleUpdateUserProfile(name, photoURL)
+                handleUpdateUserProfile(name, photoURL)
                 // handleEmailVarification();
                 // toast.success('please verify your email')
 

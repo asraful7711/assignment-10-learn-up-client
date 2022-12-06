@@ -2,30 +2,45 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGithub } from "react-icons/fa";
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import toast from 'react-hot-toast';
 
 
 
 const Login = () => {
     const [error, setError] = useState('')
-    const { providerLogin, signIn, setLoading } = useContext(AuthContext);
+    const { providerLogin, signIn, setLoading, verifyWithGithub, setUser } = useContext(AuthContext);
     const navigate = useNavigate()
     const location = useLocation();
 
     const from = location.state?.from?.pathname || '/'
 
     const googleProvider = new GoogleAuthProvider()
-
+    const githubProvider = new GithubAuthProvider()
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
-                // console.log(user)
+                console.log(user)
+                setUser(user)
                 navigate(from, { replace: true })
             })
             .catch(error => {
-                // console.error(error)
+                console.error(error)
+                setError(error)
+            })
+    }
+
+    const handleGithubSignIn = () => {
+        verifyWithGithub(githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                setUser(user)
+                navigate(from, { replace: true })
+            })
+            .then(error => {
+                console.error(error)
                 setError(error)
             })
     }
@@ -109,9 +124,9 @@ const Login = () => {
                     <span className="hidden mx-2 sm:inline">Sign in with Google</span>
                 </button>
 
-                <Link to='/' className="p-2 mx-2 text-sm font-medium text-gray-500 transition-colors duration-300 transform bg-gray-300 rounded-lg hover:bg-gray-200">
-                    <FaGithub className='text-xl'></FaGithub>
-                </Link>
+                <span className="p-2 mx-2 text-sm font-medium text-gray-500 transition-colors duration-300 transform bg-gray-300 rounded-lg hover:bg-gray-200">
+                    <FaGithub onClick={handleGithubSignIn} className='text-xl'></FaGithub>
+                </span>
             </div>
 
             <p className="mt-8 text-xs font-light text-center text-gray-400"> Don't have an account? <Link to='/signup' className="font-medium text-gray-700 dark:text-gray-200 hover:underline">Sign Up</Link></p>

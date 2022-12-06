@@ -32,6 +32,11 @@ const AuthProvider = ({ children }) => {
         return sendEmailVerification(auth.currentUser)
     }
 
+    const verifyWithGithub = (provider) => {
+        setLoading(true);
+        return signInWithPopup(auth, provider)
+    }
+
     const signIn = (email, password) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
@@ -59,7 +64,9 @@ const AuthProvider = ({ children }) => {
         createUser,
         signIn,
         updateUserProfile,
-        verifyEmail
+        verifyEmail,
+        verifyWithGithub,
+        setUser
     }
     return (
         <AuthContext.Provider value={authInfo}>

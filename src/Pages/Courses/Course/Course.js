@@ -1,9 +1,9 @@
 import React from 'react';
+import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Course = ({ course }) => {
-    const { description, name, picture, price } = course;
-    console.log(course)
+    const { _id, description, name, picture } = course;
     return (
         <div className="max-w-full mx-4 my-5 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
             <div className="px-4 py-2">
@@ -21,9 +21,11 @@ const Course = ({ course }) => {
             <img className="object-cover w-full h-48 mt-2" src={picture} alt="" />
 
             <div className="flex items-center justify-between px-4 py-2 bg-gray-900">
-                <h1 className="text-lg font-bold text-white">{price}</h1>
-                <button className="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
-                    <Link to='/coursedetail'>Go for enrollment</Link>
+                <h1 className="text-lg lg:flex flex-col items-center font-bold text-yellow-400">
+                    <FaStar></FaStar> <span>Premium Course</span>
+                </h1>
+                <button className="px-2 py-2 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">
+                    <Link to={`/course/${_id}`}>Go for enrollment</Link>
                 </button>
             </div>
         </div>

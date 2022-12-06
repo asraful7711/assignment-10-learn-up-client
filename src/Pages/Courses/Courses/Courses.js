@@ -5,7 +5,6 @@ import CourseNav from '../CourseNav/CourseNav';
 
 const Courses = () => {
     const courses = useLoaderData();
-    console.log(courses)
     return (
         <div className='lg:grid lg:grid-cols-4  w-full'>
             <div className='lg:col-span-1'>

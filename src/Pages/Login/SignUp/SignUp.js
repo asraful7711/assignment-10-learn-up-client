@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
-
+    const [error, setError] = useState();
     const { createUser } = useContext(AuthContext);
 
     const handleSubmit = event => {
@@ -20,11 +21,16 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                setError('');
+                form.reset()
+                // handleUpdateUserProfile(name, photoURL)
+                // handleEmailVarification();
+                // toast.success('please verify your email')
 
             })
             .catch(error => {
                 console.error(error)
-                // setError(error.message)
+                setError(error.message)
             });
     }
 
@@ -37,7 +43,7 @@ const SignUp = () => {
                             sign up
                         </Link>
                     </div>
-
+                    <Link to='/signup' className="text-xs text-red-600 dark:text-gray-400 hover:underline">{error}</Link>
                     <div className="relative flex items-center mt-8">
                         <span className="absolute">
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -67,6 +73,7 @@ const SignUp = () => {
 
                         <input name='email' type="email" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address" required />
                     </div>
+
 
                     <div className="relative flex items-center mt-4">
                         <span className="absolute">

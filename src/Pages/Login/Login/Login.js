@@ -1,10 +1,18 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGithub } from "react-icons/fa";
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
+
+
+
 const Login = () => {
+    const [error, setError] = useState('')
     const { providerLogin, signIn } = useContext(AuthContext);
+    const navigate = useNavigate()
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/'
 
     const googleProvider = new GoogleAuthProvider()
 
@@ -14,7 +22,10 @@ const Login = () => {
                 const user = result.user;
                 console.log(user)
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error)
+                setError(error)
+            })
     }
 
     const handleSubmit = event => {
@@ -22,6 +33,29 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                form.reset()
+                setError('')
+                // navigate('/')
+                // if (user.emailVerified) {
+
+                navigate(from, { replace: true })
+                // }
+                // else {
+                //     toast.error('your email is not verify')
+                // }
+
+            })
+            .catch(error => {
+                console.error(error)
+                setError(error.message)
+            })
+            .finally(() => {
+                // setLoading(false)
+            })
     }
     return (
         <div className="w-full max-w-sm my-10 p-6 m-auto mx-auto bg-white rounded-lg drop-shadow-lg dark:bg-gray-800">
@@ -40,7 +74,7 @@ const Login = () => {
                 <div className="mt-4">
                     <div className="flex items-center justify-between">
                         <label htmlFor="password" className="block text-sm text-gray-800 dark:text-gray-200">Password</label>
-                        {/* <Link to='/' className="text-xs text-gray-600 dark:text-gray-400 hover:underline">Forget Password?</Link> */}
+                        <Link to='/login' className="text-xs text-red-600 dark:text-gray-400 hover:underline">{error}</Link>
                     </div>
 
                     <input name='password' type="password" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" />
@@ -50,6 +84,7 @@ const Login = () => {
                     <button className="w-full px-6 py-2.5 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
                         Confirm
                     </button>
+
                 </div>
             </form>
 

@@ -3,12 +3,13 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGithub } from "react-icons/fa";
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
+import toast from 'react-hot-toast';
 
 
 
 const Login = () => {
     const [error, setError] = useState('')
-    const { providerLogin, signIn } = useContext(AuthContext);
+    const { providerLogin, signIn, setLoading } = useContext(AuthContext);
     const navigate = useNavigate()
     const location = useLocation();
 
@@ -40,14 +41,13 @@ const Login = () => {
                 console.log(user)
                 form.reset()
                 setError('')
-                // navigate('/')
-                // if (user.emailVerified) {
+                if (user.emailVerified) {
 
-                navigate(from, { replace: true })
-                // }
-                // else {
-                //     toast.error('your email is not verify')
-                // }
+                    navigate(from, { replace: true })
+                }
+                else {
+                    toast.error('your email is not verified,please verify')
+                }
 
             })
             .catch(error => {
@@ -55,7 +55,7 @@ const Login = () => {
                 setError(error.message)
             })
             .finally(() => {
-                // setLoading(false)
+                setLoading(false)
             })
     }
     return (
